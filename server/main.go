@@ -248,8 +248,8 @@ func (down *Session) writeLoop() {
 				replies = append(replies, reply)
 			}
 			for _, reply := range replies {
-				if reply == nil {
-					buffer.Write(NIL)
+				if reply.Len() == 0 {
+					buffer.Write(ERROR_UNSUPPORTED)
 					continue
 				}
 				buffer.Write(reply.Bytes())
